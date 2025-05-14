@@ -34,10 +34,12 @@ flutter:
     - assets/moniepoint.png
     - assets/palmpay.png
     - assets/opaybig.png
+    - assets/pretium.png
+    - assets/pretium_icon.png
 
-flutter_icons:
+flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/app_icon.png"
-  adaptive_icon_foreground: "assets/app_icon.png" # For Android adaptive icons
+  image_path: "assets/pretium_icon.png"
+  adaptive_icon_foreground: "assets/pretium_icon.png"
   adaptive_icon_background: "#FFFFFF"

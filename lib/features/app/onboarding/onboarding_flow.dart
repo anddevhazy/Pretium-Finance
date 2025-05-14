@@ -74,7 +74,10 @@ class _OnboardingPageFlowState extends State<OnboardingPageFlow> {
                   });
                 },
                 itemBuilder: (context, index) {
-                  return OnboardingPage(item: onboardingFlowItems[index]);
+                  return OnboardingPage(
+                    item: onboardingFlowItems[index],
+                    index: index,
+                  );
                 },
               ),
             ),

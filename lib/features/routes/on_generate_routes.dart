@@ -12,41 +12,67 @@ class OnGenerateRoutes {
   static Route<dynamic>? generate(RouteSettings settings) {
     final args = settings.arguments;
 
+    Route<dynamic> _fadeRoute(Widget page, {required Duration duration}) {
+      return PageRouteBuilder(
+        settings: settings,
+        pageBuilder: (context, animation, secondaryAnimation) => page,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+        transitionDuration: duration,
+      );
+    }
+
     switch (settings.name) {
       case RouteNames.splashScreen:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return _fadeRoute(
+          const SplashScreen(),
+          duration: const Duration(milliseconds: 500),
+        );
 
       case RouteNames.onboardingFlow:
-        return MaterialPageRoute(builder: (_) => const OnboardingPageFlow());
+        return _fadeRoute(
+          const OnboardingPageFlow(),
+          duration: const Duration(milliseconds: 3000),
+        );
 
       case RouteNames.signUp:
-        return MaterialPageRoute(builder: (_) => const SignupPage());
+        return _fadeRoute(
+          const SignupPage(),
+          duration: const Duration(milliseconds: 500),
+        );
 
       case RouteNames.logIn:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return _fadeRoute(
+          const LoginScreen(),
+          duration: const Duration(milliseconds: 500),
+        );
 
       case RouteNames.createPin:
-        return MaterialPageRoute(
-          builder:
-              (_) => ChoosePinScreen(
-                onPinConfirmed: (pin) {
-                  debugPrint('PIN confirmed: $pin');
-                },
-              ),
+        return _fadeRoute(
+          ChoosePinScreen(
+            onPinConfirmed: (pin) {
+              debugPrint('PIN confirmed: $pin');
+            },
+          ),
+          duration: const Duration(milliseconds: 500),
         );
 
       case RouteNames.homePage:
         final email = args as String;
-        return MaterialPageRoute(builder: (_) => HomePage(email: email));
+        return _fadeRoute(
+          HomePage(email: email),
+          duration: const Duration(milliseconds: 500),
+        );
 
       case RouteNames.forgotPassword:
-        return MaterialPageRoute(
-          builder:
-              (_) => PasswordResetScreen(
-                onSendResetCode: (email) {
-                  debugPrint('Sending reset code to: $email');
-                },
-              ),
+        return _fadeRoute(
+          PasswordResetScreen(
+            onSendResetCode: (email) {
+              debugPrint('Sending reset code to: $email');
+            },
+          ),
+          duration: const Duration(milliseconds: 500),
         );
     }
   }

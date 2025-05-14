@@ -24,7 +24,15 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColour,
-      body: Center(child: Image.asset('assets/opay.png')),
+      body: Center(
+        child: Hero(
+          tag: 'logoHero',
+          createRectTween: (begin, end) {
+            return MaterialRectArcTween(begin: begin, end: end);
+          },
+          child: Image.asset('assets/pretium.png', width: 200, height: 200),
+        ),
+      ),
     );
   }
 }

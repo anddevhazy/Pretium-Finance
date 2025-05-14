@@ -4,7 +4,8 @@ import 'package:pretium/features/app/onboarding/onboarding_flow_items.dart';
 
 class OnboardingPage extends StatelessWidget {
   final OnboardingFlowItem item;
-  const OnboardingPage({super.key, required this.item});
+  final int index;
+  const OnboardingPage({super.key, required this.item, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,23 @@ class OnboardingPage extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: Center(
-            child: Icon(item.icon, size: 50.0, color: primaryColour),
+            child:
+                index == 0
+                    ? Hero(
+                      tag: 'logoHero',
+                      createRectTween: (begin, end) {
+                        return MaterialRectArcTween(begin: begin, end: end);
+                      },
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/pretium.png',
+                          width: 110,
+                          height: 110,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    )
+                    : Icon(item.icon, size: 50.0, color: primaryColour),
           ),
         ),
         const SizedBox(height: 32.0),
