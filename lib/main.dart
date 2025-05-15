@@ -23,18 +23,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<AuthCubit>()),
         BlocProvider(create: (context) => ThemeCubit()),
       ],
-      child: BlocBuilder<ThemeCubit, ThemeState>(
-        builder: (context, themeState) {
-          final themeCubit = BlocProvider.of<ThemeCubit>(context);
-          return MaterialApp(
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: themeCubit.themeMode,
-            initialRoute: RouteNames.splashScreen,
-            onGenerateRoute: OnGenerateRoutes.generate,
-            debugShowCheckedModeBanner: false,
-          );
-        },
+      child: MaterialApp(
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.light,
+        initialRoute: RouteNames.splashScreen,
+        onGenerateRoute: OnGenerateRoutes.generate,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
