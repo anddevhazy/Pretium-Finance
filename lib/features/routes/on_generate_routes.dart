@@ -27,7 +27,7 @@ class OnGenerateRoutes {
       case RouteNames.splashScreen:
         return _fadeRoute(
           const SplashScreen(),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
         );
 
       case RouteNames.onboardingFlow:
@@ -39,13 +39,13 @@ class OnGenerateRoutes {
       case RouteNames.signUp:
         return _fadeRoute(
           const SignupPage(),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
         );
 
       case RouteNames.logIn:
         return _fadeRoute(
           const LoginScreen(),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
         );
 
       case RouteNames.createPin:
@@ -55,14 +55,14 @@ class OnGenerateRoutes {
               debugPrint('PIN confirmed: $pin');
             },
           ),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
         );
 
       case RouteNames.homePage:
         final email = args as String;
         return _fadeRoute(
           HomePage(email: email),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
         );
 
       case RouteNames.forgotPassword:
@@ -72,7 +72,7 @@ class OnGenerateRoutes {
               debugPrint('Sending reset code to: $email');
             },
           ),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
         );
     }
   }
